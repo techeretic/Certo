@@ -44,6 +44,7 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int fragment_main=0x7f030001;
         public static final int fragment_navigation_drawer=0x7f030002;
+        public static final int welcome_fragment=0x7f030003;
     }
     public static final class menu {
         public static final int global=0x7f070000;
@@ -53,6 +54,9 @@ public final class R {
         public static final int action_example=0x7f050006;
         public static final int action_settings=0x7f050007;
         public static final int app_name=0x7f050000;
+        public static final int default_tag_line=0x7f050009;
+        public static final int default_title=0x7f05000a;
+        public static final int default_welcome_message=0x7f050008;
         public static final int navigation_drawer_close=0x7f050005;
         public static final int navigation_drawer_open=0x7f050004;
         public static final int title_section1=0x7f050001;

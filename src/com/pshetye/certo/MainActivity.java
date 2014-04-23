@@ -43,6 +43,14 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+        
+        mTitle = getTitle();
+        
+        Fragment fragment = new WelcomeFragment();
+        
+        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        
+        mTitle = getString(R.string.default_title);
     }
 
     @Override
@@ -65,6 +73,8 @@ public class MainActivity extends Activity
             case 3:
                 mTitle = getString(R.string.title_section3);
                 break;
+            default:
+            	mTitle = getTitle();
         }
     }
 

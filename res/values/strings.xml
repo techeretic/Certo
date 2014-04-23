@@ -9,5 +9,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="default_welcome_message">Certo</string>
+    <string name="default_tag_line">Showcase it, Sell it</string>
+    <string name="default_title">Swipe to Continue</string>
 
 </resources>
