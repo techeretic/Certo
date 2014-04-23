@@ -18,7 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+        			ProductsFragment.OnActivityAttachedCallBacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -55,11 +56,21 @@ public class MainActivity extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+    	Fragment frag;
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+    	switch (position) {
+    	case 0: //Products
+    		frag = new ProductsFragment();
+    		break;
+    	default:
+    		frag = null;	
+    	}
+    	if (frag != null) {
+    		FragmentManager fragmentManager = getFragmentManager();
+    		fragmentManager.beginTransaction()
+                .replace(R.id.container, frag)
                 .commit();
+    	}
     }
 
     public void onSectionAttached(int number) {
@@ -152,5 +163,12 @@ public class MainActivity extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+
+	@Override
+	public void UpdateActionBar(int position) {
+		// TODO Auto-generated method stub
+		onSectionAttached(position+1);
+		restoreActionBar();
+	}
 
 }
