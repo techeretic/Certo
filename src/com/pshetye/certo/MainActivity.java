@@ -1,23 +1,22 @@
 package com.pshetye.certo;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class MainActivity extends Activity
+public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
         			ProductsFragment.OnActivityAttachedCallBacks {
 
@@ -37,7 +36,7 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer);
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
@@ -49,27 +48,39 @@ public class MainActivity extends Activity
         
         Fragment fragment = new WelcomeFragment();
         
-        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
         
         mTitle = getString(R.string.default_title);
     }
 
-    @Override
+    @SuppressLint("CommitTransaction")
+	@Override
     public void onNavigationDrawerItemSelected(int position) {
     	Fragment frag;
         // update the main content by replacing fragments
     	switch (position) {
     	case 0: //Products
     		frag = new ProductsFragment();
+    		mTitle = getString(R.string.title_section1);
+    		break;
+    	case 1: //Products
+    		frag = new ProductsFragment();
+    		mTitle = getString(R.string.title_section1);
+    		break;
+    	case 2: //Products
+    		frag = new ProductsFragment();
+    		mTitle = getString(R.string.title_section1);
     		break;
     	default:
     		frag = null;	
     	}
     	if (frag != null) {
-    		FragmentManager fragmentManager = getFragmentManager();
-    		fragmentManager.beginTransaction()
-                .replace(R.id.container, frag)
-                .commit();
+    		getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
+    		getActionBar().setTitle(mTitle);
+
+    		Log.e("PRATHAM", "frag != null");
+    	} else {
+    		Log.e("PRATHAM", "Error in creating fragment");
     	}
     }
 
@@ -169,6 +180,14 @@ public class MainActivity extends Activity
 		// TODO Auto-generated method stub
 		onSectionAttached(position+1);
 		restoreActionBar();
+	}
+
+	@Override
+	public void OpenProductProfileFragment(String ProductTitle) {
+		// TODO Auto-generated method stub
+		Intent myIntent = new Intent(com.pshetye.certo.MainActivity.this, com.pshetye.certo.ProductProfileActivity.class);
+		myIntent.putExtra("title", ProductTitle); //Optional parameters
+		startActivity(myIntent);
 	}
 
 }

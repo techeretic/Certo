@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +66,7 @@ public class ProductsFragment extends Fragment {
 	// Container Activity must implement this interface
     public interface OnActivityAttachedCallBacks {
         public void UpdateActionBar(int position);
+        public void OpenProductProfileFragment(String ProductTitle);
     }
 	
 	public ProductsFragment() {		
@@ -117,6 +118,8 @@ public class ProductsFragment extends Fragment {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
+				if(listDataChild.get(ProductsList.get(groupPosition)).get(childPosition).equals("       ..... MORE INFO .....      "))
+					mCallBack.OpenProductProfileFragment(ProductsList.get(groupPosition));
 				Toast.makeText(
                         getActivity(),
                         ProductsList.get(groupPosition)

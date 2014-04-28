@@ -12,5 +12,7 @@
     <string name="default_welcome_message">Certo</string>
     <string name="default_tag_line">Showcase it, Sell it</string>
     <string name="default_title">Swipe to Continue</string>
-
+	<string name="product_section1">Product Details</string>
+	<string name="product_section2">Premium Details</string>
+	<string name="product_section3">Benefits</string>
 </resources>
