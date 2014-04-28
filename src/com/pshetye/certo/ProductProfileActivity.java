@@ -1,6 +1,7 @@
 package com.pshetye.certo;
 
 import java.util.Locale;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,8 +19,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class ProductProfileActivity extends ActionBarActivity implements
-		ActionBar.TabListener,
-		NavigationDrawerFragment.NavigationDrawerCallbacks {
+ActionBar.TabListener,
+NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -30,6 +31,7 @@ public class ProductProfileActivity extends ActionBarActivity implements
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
+
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
@@ -39,11 +41,11 @@ public class ProductProfileActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.product_profile_activity);
-		
+
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+
 		actionBar.setTitle(getIntent().getStringExtra("title"));
 
 		// Create the adapter that will return a fragment for each of the three
@@ -58,12 +60,12 @@ public class ProductProfileActivity extends ActionBarActivity implements
 		// tab. We can also use ActionBar.Tab#select() to do this if we have
 		// a reference to the Tab.
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 
 		actionBar.addTab(actionBar.newTab()
@@ -104,6 +106,7 @@ public class ProductProfileActivity extends ActionBarActivity implements
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
+		Log.i("PRATHAM","tab.getPosition() == " + tab.getPosition());
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -132,6 +135,14 @@ public class ProductProfileActivity extends ActionBarActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
+			Log.i("PRATHAM","position == " + position);
+			if(position == 0 ){
+				return new ProductDescriptionFragment();
+			}
+			else if(position == 2){
+				return new ProductBenefitFragments();
+			}
+
 			return PlaceholderFragment.newInstance(position + 1);
 		}
 
@@ -198,31 +209,31 @@ public class ProductProfileActivity extends ActionBarActivity implements
 		// TODO Auto-generated method stub
 		Fragment frag;
 		String mTitle = getString(R.string.product_section1);
-        // update the main content by replacing fragments
-    	switch (position) {
-    	case 0: //Products
-    		frag = new ProductsFragment();
-    		mTitle = getString(R.string.title_section1);
-    		break;
-    	case 1: //Products
-    		frag = new ProductsFragment();
-    		mTitle = getString(R.string.title_section1);
-    		break;
-    	case 2: //Products
-    		frag = new ProductsFragment();
-    		mTitle = getString(R.string.title_section1);
-    		break;
-    	default:
-    		frag = null;	
-    	}
-    	if (frag != null) {
-    		getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
-    		getActionBar().setTitle(mTitle);
+		// update the main content by replacing fragments
+		switch (position) {
+		case 0: //Products
+			frag = new ProductsFragment();
+			mTitle = getString(R.string.title_section1);
+			break;
+		case 1: //Products
+			frag = new ProductsFragment();
+			mTitle = getString(R.string.title_section1);
+			break;
+		case 2: //Products
+			frag = new ProductsFragment();
+			mTitle = getString(R.string.title_section1);
+			break;
+		default:
+			frag = null;	
+		}
+		if (frag != null) {
+			getSupportFragmentManager().beginTransaction().replace(R.id.container, frag).commit();
+			getActionBar().setTitle(mTitle);
 
-    		Log.e("PRATHAM", "frag != null");
-    	} else {
-    		Log.e("PRATHAM", "Error in creating fragment");
-    	}
+			Log.e("PRATHAM", "frag != null");
+		} else {
+			Log.e("PRATHAM", "Error in creating fragment");
+		}
 	}
 
 }
