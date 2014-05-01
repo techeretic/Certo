@@ -136,13 +136,15 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
 			Log.i("PRATHAM","position == " + position);
-			if(position == 0 ){
-				return new ProductDescriptionFragment();
+			
+			switch(position) {
+				case 0:
+					return new ProductDescriptionFragment();
+				case 1:
+					return new ProductPremiumFragment();
+				case 2:
+					return new ProductBenefitFragments();
 			}
-			else if(position == 2){
-				return new ProductBenefitFragments();
-			}
-
 			return PlaceholderFragment.newInstance(position + 1);
 		}
 

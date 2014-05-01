@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -18,5 +18,10 @@
     </style>
     
     <style name="QueryTheme" parent="@style/Theme.AppCompat"></style>
+    
+    <style name="PremiumFragmentText" parent="@android:style/TextAppearance.Medium" >
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">12sp</item>
+    </style>
 
 </resources>

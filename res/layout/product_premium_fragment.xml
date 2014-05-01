@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!--
+    Occupation
+    Gender
+    Age
+    Sum Assured
+    -->
+
+    <TextView
+        android:id="@+id/txt_Occupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/PremiumFragmentText"
+        android:paddingBottom="5sp"
+        android:paddingTop="25sp"
+        android:text="Occupation" />
+
+    <Spinner
+        android:id="@+id/sp_occupation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/txt_Occupation"
+        android:paddingLeft="30dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txt_Gender"
+        style="@style/PremiumFragmentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25sp"
+        android:paddingBottom="5sp"
+        android:text="Gender" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="30dp" >
+	
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txt_Age"
+        style="@style/PremiumFragmentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25sp"
+        android:paddingBottom="5sp"
+        android:text="Age" />
+
+    <Spinner
+        android:id="@+id/sp_age"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingLeft="30dp"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/txt_Sum"
+        style="@style/PremiumFragmentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5sp"
+        android:paddingTop="25sp"
+        android:text="Sum Assured" />
+
+    <Spinner
+        android:id="@+id/sp_sum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingLeft="30dp"
+        android:spinnerMode="dropdown" />
+
+</LinearLayout>
